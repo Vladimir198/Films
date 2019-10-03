@@ -65,7 +65,7 @@ namespace FilmsCatalog.Controllers
                         return RedirectToAction("FilmDetails", new { id = model.Id });
                     }
                 }
-                return View(model);
+                return View("AddFilmPartial", model);
             }
             catch (Exception ex)
             {
@@ -130,6 +130,24 @@ namespace FilmsCatalog.Controllers
             }
         }
 
+
+        [HttpGet]
+        [Authorize]
+        public async Task<ActionResult> RemoveFilm(int id)
+        {
+            try
+            {
+                await _filmService.RemoveFilmAsync(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                //TODO: Реализовать запись в лог.
+                return new HttpNotFoundResult(ex.Message);
+            }
+
+
+        }
 
         #region File
 

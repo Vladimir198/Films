@@ -54,11 +54,14 @@
             </div>
         </div>
         <div class="btn-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 col-md-4">
                 <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>
-            <div class="col-md-offset-4 col-md-8">
+            <div class="col-md-offset-4 col-md-4">
                 <input type="button" value="Отмена" class="btn btn-info" />
+            </div>
+            <div class="col-md-offset-4 col-md-4">
+                <a type="button" href="@Html.Raw(Url.Action("RemoveFilm", "Home"))/@Model.Id" class="btn btn-danger">Удалить</a>
             </div>
         </div>
     </div>
