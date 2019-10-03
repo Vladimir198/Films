@@ -5,7 +5,7 @@
         @foreach (var item in Model.Films)
         {
         <div class="card film-card" style="width: 18rem;">
-            <a href="@Html.Raw(Url.Action("FilmDetails"))?id=@item.Id"><img class="card-img-top" src="@item.PosterUrl" alt="@item.Name"></a>
+            <a href="@Html.Raw(Url.Action("FilmDetails"))?id=@item.Id"><img class="card-img-top" src="@Html.Raw(Url.Action("Poster"))?id=@item.Id" alt="@item.Name"></a>
             <div class="card-body">
                 <h4 class="card-title">@item.Name</h4>
                 <h6 class="card-text">Год выпуска: @item.CreateYear</h6>
