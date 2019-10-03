@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNet.Identity;
+@model FilmsCatalog.Models.ViewModels.FilmViewModel
+
+    <div class="container film-details-container">
+        <div class="row">
+            <div class="container">
+                <div class="float-left">
+                    <h4>@Model.Name</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Producer)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Producer)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CreateYear)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.CreateYear)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.UserName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.UserName)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="poster-container rounded float-right">
+                    <img src="@Html.Raw(Url.Action("Poster"))?id=@Model.Id" class="img-fluid" alt="@Model.Name">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+            </dl>
+        </div>
+        <div class="film-details-fotter">
+            @if (User.Identity.GetUserId() == Model.UserId)
+            {
+
+                @Html.ActionLink("Изменить", "EditFilm", new { id = Model.Id }, new { @class = "btn btn-primary", @type = "button" })
+            }
+        </div>
+    </div>

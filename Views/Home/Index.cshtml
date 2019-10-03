@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+    <div class="container-fluid">
+        <div class="container film-list-menu">
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("Добавить фильм", "AddFilm", "Home", new { @class = "btn btn-primary", @type = "button" })
+            }
+        </div>
+        <div id="filmsList" class="container">
+
+        </div>
+        <div class="pagination-holder row justify-content-center">
+            <div class="pagination-holder clearfix">
+                <div class="pagination dark-theme"></div>
+            </div>
+
+            <div class="pagination-items-showing row">
+                <div class="pagination-items-showing-title">Отображать по: </div>
+                <div class="pagination-items-showing-select custom-select-sm">
+                    <select id="pageSize" data-width="60px">
+                        <option value=12>12</option>
+                        <option value=24>24</option>
+                        <option value=48>48</option>
+                        <option value=96>96</option>
+                        <option value=192>192</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+    </div>
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    var pagination = {};
+    InitFilmsList(1);
+    $("#pageSize").on("change", function () {
+    InitFilmsList(1);
+    });
+    function InitFilmsList(currentPage) {
+        pagination.CurrentPage = currentPage;
+        pagination.PageSize = $("#pageSize").val();
+        $.ajax({
+            url: '@Html.Raw(Url.Action("GetFilmsList"))',
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            cache: false,
+            dataType: "html",
+            data: pagination,
+            success: function (response) {
+                console.log(response);
+                $("#filmsList").html(response);
+            }
+        });
+    }
+    //# sourceURL=index.js
+</script>

@@ -1,0 +1,91 @@
+﻿body {
+    background-image: url('Images/270362_1920x1080x500.jpg');
+    background-size: cover;
+    height: -webkit-fill-available;
+    
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    min-height: 800px;
+    margin-top: 15px;
+}
+.bg-dark a{
+    color: #b8b8ff;
+}
+
+.bg-dark {
+    color: #eeeeff;
+}
+.dl-horizontal dt {
+    white-space: normal;
+}
+a.btn {
+    color: #212529;
+}
+.add-film{
+    color:white!important;
+}
+
+.pagination-items-showing {
+    margin-left: 0px !important;
+    float: right !important;
+    margin-top: 10px;
+}
+
+.pagination-holder {
+    margin-left: 0px !important;
+    margin-top: 10px;
+}
+
+.film-list-container{
+    padding: 15px!important;
+}
+
+.film-list-menu {
+    padding-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+
+.film-card{
+    background-color:bisque;
+    margin:15px;
+    min-width: 310px;
+    max-width: 310px;
+    min-height: 600Px;
+    max-height: 600px;
+
+}
+.card-body {
+    overflow: hidden;
+    color: #212529 !important;
+}
+
+.poster-container{
+    max-height: 600px;
+    max-width: 400px;
+}
+
+.film-details-container {
+    padding: 15px;
+    color: #eeeeff;
+}
+
+.form-horizontal {
+    padding: 15px;
+    color: #eeeeff;
+}
+
+.hr {
+    background-color: #eeeeff;
+}
+.dropzone {
+    border-radius: 0.25rem !important;
+    color: #212529 !important;
+}
+.current-pooster img {
+    margin-bottom:5px;
+    max-width: 120px;
+    max-height: 120px;
+}

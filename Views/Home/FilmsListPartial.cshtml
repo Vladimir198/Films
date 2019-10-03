@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNet.Identity;
+@model FilmsCatalog.Models.ViewModels.FilmsListViewModel
+    <div class="row film-list-container">
+        @{var userId = User.Identity.GetUserId();}
+        @foreach (var item in Model.Films)
+        {
+        <div class="card film-card" style="width: 18rem;">
+            <a href="@Html.Raw(Url.Action("FilmDetails"))?id=@item.Id"><img class="card-img-top" src="@item.PosterUrl" alt="@item.Name"></a>
+            <div class="card-body">
+                <h4 class="card-title">@item.Name</h4>
+                <h6 class="card-text">Год выпуска: @item.CreateYear</h6>
+                <h6 class="card-text">Режисер: @item.Producer</h6>
+                <div class="card-text">@item.Description</div>
+            </div>
+            <div class="card-footer">
+                @if (userId == item.UserId)
+                {
+                    <a href="@Html.Raw(Url.Action("EditFilm"))?id=@item.Id" class="btn btn-primary">Изменить</a>
+                }
+                <a href="@Html.Raw(Url.Action("FilmDetails"))?id=@item.Id" class="btn btn-outline-success">Подробности</a>
+            </div>
+        </div>
+        }
+    </div>
+
+<script type="text/javascript">
+    $('.pagination').pagination({
+        items: @Model.TotalCount,
+        itemsOnPage: @Model.PageSize,
+        currentPage: @Model.CurrentPage,
+	    prevText: 'Предыдущая',
+        nextText: 'Следующая',
+        
+        onPageClick(pageNumber, event) {
+            InitFilmsList(pageNumber);
+        }
+    });
+</script>

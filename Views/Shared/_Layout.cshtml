@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Каталог фильмов</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/dropzone")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/fontawesome")
+    @Scripts.Render("~/bundles/dropzone")
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-dark bg-dark">
+            <a class = "navbar-brand" href="@Html.Raw(Url.Action("Index","Home"))">Каталог фильмов</a>
+
+            @Html.Partial("_LoginPartial")
+        </nav>
+        <div class="container body-content bg-dark">
+            @RenderBody()
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
